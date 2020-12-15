@@ -12,6 +12,16 @@ const QUERY_POSTS = gql`
         content
         title
         slug
+        featuredImage {
+          node {
+            mediaDetails {
+              sizes {
+                sourceUrl
+                name
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -44,9 +54,23 @@ export default function Home() {
           Next.js with dynamic data from Wordpress
         </p>
 
-        {posts.map(({ id, title, url, content }) => (
-          <Post key={id} url={url} title={title} content={content} />
-        ))}
+        <div className={styles.grid}>
+          {posts.map(({ id, title, url, content, featuredImage }) => {
+            const thumbnail = featuredImage.node.mediaDetails.sizes.find(
+              ({ name }) => name === 'thumbnail'
+            );
+
+            return (
+              <Post
+                key={id}
+                url={url}
+                title={title}
+                content={content}
+                imgUrl={thumbnail.sourceUrl}
+              />
+            );
+          })}
+        </div>
       </main>
     </div>
   );

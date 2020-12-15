@@ -1,10 +1,7 @@
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-  margin-top: 3rem;
+.image {
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 5px;
 }
 
 .card {
@@ -24,6 +21,7 @@
 .card:active {
   color: #0070f3;
   border-color: #0070f3;
+  cursor: pointer;
 }
 
 .card h3 {
