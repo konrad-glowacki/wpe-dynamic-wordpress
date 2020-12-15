@@ -1,7 +1,9 @@
-import '../styles/globals.css'
+import withApollo from '../lib/withApollo';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import '../styles/globals.css';
+
+function App({ Component, pageProps }) {
+  return <Component {...pageProps} />;
 }
 
-export default MyApp
+export default withApollo({ ssr: true })(App);
